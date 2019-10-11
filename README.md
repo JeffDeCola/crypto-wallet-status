@@ -22,9 +22,26 @@ Documentation and reference,
 
 [GitHub Webpage](https://jeffdecola.github.io/crypto-wallet-status/)
 
+## THE STACK
+
+* **UI** - React.js
+* **Routing & REST framework** - go gorilla/mux package
+* **Backend** - golang
+* **Database** - Postgres
+
+You may need to,
+
+```bash
+go get -u -v github.com/gorilla/mux
+```
+
 ## OVERVIEW
 
-tbd
+Here is an overview of what we're going to do,
+
+![IMAGE - crypto-wallet-status-overview - IMAGE](https://github.com/JeffDeCola/my-go-examples/blob/master/docs/pics/crypto-wallet-status-overview.jpg)
+
+## TBD
 
 ## UPDATE GITHUB WEBPAGE USING CONCOURSE (OPTIONAL)
 
