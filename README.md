@@ -39,7 +39,7 @@ go get -u -v github.com/gorilla/mux
 
 Here is an overview of what we're going to do,
 
-![IMAGE - crypto-wallet-status-overview - IMAGE](https://github.com/JeffDeCola/my-go-examples/blob/master/docs/pics/crypto-wallet-status-overview.jpg)
+![IMAGE - crypto-wallet-status-overview - IMAGE](docs/pics/crypto-wallet-status-overview.jpg)
 
 ## TBD
 
