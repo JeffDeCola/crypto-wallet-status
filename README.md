@@ -22,12 +22,23 @@ Documentation and reference,
 
 [GitHub Webpage](https://jeffdecola.github.io/crypto-wallet-status/)
 
-## THE STACK
+## PREREQUISITES
 
-* **UI** - React.js
-* **Routing & REST framework** - go gorilla/mux package
-* **Backend** - golang
-* **Database** - Postgres
+```bash
+go get -u -v github.com/gorilla/mux
+go get -u -v github.com/sirupsen/logrus
+```
+
+## SOFTWARE STACK
+
+* **GUI**
+  _golang net/http package and ReactJS_
+* **Routing & REST API framework**
+  _golang gorilla/mux package_
+* **Backend**
+  _golang_
+* **Database**
+  _N/A_
 
 You may need to,
 
