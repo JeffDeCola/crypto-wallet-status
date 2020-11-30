@@ -1,35 +1,32 @@
+_built with
+[concourse ci](https://github.com/JeffDeCola/crypto-wallet-status/blob/master/ci-README.md)_
 
-# OVERVIEW
+# PREREQUISITES
 
-tbd
+```bash
+go get -u -v github.com/gorilla/mux
+go get -u -v github.com/sirupsen/logrus
+```
 
-## UPDATE GITHUB WEBPAGE USING CONCOURSE (OPTIONAL)
+## SOFTWARE STACK
 
-For fun, I use concourse to update
-[crypto-wallet-status GitHub Webpage](https://jeffdecola.github.io/crypto-wallet-status/)
-and alert me of the changes via repo status and slack.
+* **GUI**
+  _golang net/http package and ReactJS_
+* **Routing & REST API framework**
+  _golang gorilla/mux package_
+* **Backend**
+  _golang_
+* **Database**
+  _N/A_
 
-A pipeline file [pipeline.yml](https://github.com/JeffDeCola/crypto-wallet-status/tree/master/ci/pipeline.yml)
-shows the entire ci flow. Visually, it looks like,
+You may need to,
 
-![IMAGE - crypto-wallet-status concourse ci pipeline - IMAGE](pics/crypto-wallet-status-pipeline.jpg)
+```bash
+go get -u -v github.com/gorilla/mux
+```
 
-The `jobs` and `tasks` are,
+## OVERVIEW
 
-* `job-readme-github-pages` runs task
-  [readme-github-pages.sh](https://github.com/JeffDeCola/crypto-wallet-status/tree/master/ci/scripts/readme-github-pages.sh).
+Here is an overview of what we're going to do,
 
-The concourse `resources types` are,
-
-* `crypto-wallet-status` uses a resource type
-  [docker-image](https://hub.docker.com/r/concourse/git-resource/)
-  to PULL a repo from github.
-* `resource-slack-alert` uses a resource type
-  [docker image](https://hub.docker.com/r/cfcommunity/slack-notification-resource)
-  that will notify slack on your progress.
-* `resource-repo-status` uses a resource type
-  [docker image](https://hub.docker.com/r/dpb587/github-status-resource)
-  that will update your git status for that particular commit.
-
-For more information on using concourse for continuous integration,
-refer to my cheat sheet on [concourse](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/software/operations-tools/continuous-integration-continuous-deployment/concourse-cheat-sheet).
+![IMAGE - crypto-wallet-status-overview - IMAGE](pics/crypto-wallet-status-overview.jpg)
