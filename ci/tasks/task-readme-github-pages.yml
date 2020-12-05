@@ -1,0 +1,19 @@
+# crypto-wallet-status task-readme-github-pages.yml
+
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: golang
+    tag: 1.15.3
+
+inputs:
+- name: crypto-wallet-status
+
+outputs:
+- name: crypto-wallet-status-updated
+
+run:
+  path: ./crypto-wallet-status/ci/scripts/readme-github-pages.sh
+  # args: [-debug]
