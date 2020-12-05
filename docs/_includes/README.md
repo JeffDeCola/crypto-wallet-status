@@ -1,11 +1,24 @@
 _built with
 [concourse ci](https://github.com/JeffDeCola/crypto-wallet-status/blob/master/ci-README.md)_
 
-# PREREQUISITES
+# OVERVIEW
+
+Here is an overview of what we're going to do,
+
+![IMAGE - crypto-wallet-status-overview - IMAGE](pics/crypto-wallet-status-overview.jpg)
+
+## PREREQUISITES
 
 I used the following language,
 
 * [go](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/software/development/languages/go-cheat-sheet)
+
+You will need the following go packages,
+
+```bash
+go get -u -v github.com/gorilla/mux
+go get -u -v github.com/sirupsen/logrus
+```
 
 To build a docker image you will need docker on your machine,
 
@@ -23,15 +36,6 @@ To deploy to `mesos/marathon` you will need,
 As a bonus, you can use Concourse CI,
 
 * [concourse](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/software/operations-tools/continuous-integration-continuous-deployment/concourse-cheat-sheet)
-
-## GO PACKAGES
-
-You may need,
-
-```bash
-go get -u -v github.com/gorilla/mux
-go get -u -v github.com/sirupsen/logrus
-```
 
 ## SOFTWARE STACK
 
@@ -58,19 +62,17 @@ cd code
 go run main.go
 ```
 
-Every 2 seconds it will print,
+As a placeholder, every 2 seconds it will print,
 
-```bash
-Hello everyone, count is: 1
-Hello everyone, count is: 2
-Hello everyone, count is: 3
-etc...
+```txt
+    INFO[0000] Let's Start this!
+    Hello everyone, count is: 1
+    Hello everyone, count is: 2
+    Hello everyone, count is: 3
+    etc...
 ```
 
 ## CREATE BINARY
-
-If you want, you can create a binary, but this will not be used since
-it is created during the docker image build.
 
 The following steps are located in
 [create-binary.sh](https://github.com/JeffDeCola/crypto-wallet-status/blob/master/code/bin/create-binary.sh).
@@ -82,13 +84,10 @@ cd bin
 ./crypto-wallet
 ```
 
-## OVERVIEW
+This binary will not be used during a docker build
+since it creates it's own.
 
-Here is an overview of what we're going to do,
-
-![IMAGE - crypto-wallet-status-overview - IMAGE](pics/crypto-wallet-status-overview.jpg)
-
-## CONTINUOUS INTEGRATION & DEPLOYMENT
+## TEST, BUILD, PUSH & DEPLOY
 
 Refer to
 [ci-README.md](https://github.com/JeffDeCola/crypto-wallet-status/blob/master/ci-README.md)
