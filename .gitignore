@@ -1,8 +1,0 @@
-# CONCOURSE
-.credentials.yml
-
-# GO
-coverage.out
-
-# macOS
-.DS_Store
