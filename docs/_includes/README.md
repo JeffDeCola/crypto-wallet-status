@@ -88,7 +88,13 @@ Here is an overview of what we're going to do,
 
 ![IMAGE - crypto-wallet-status-overview - IMAGE](pics/crypto-wallet-status-overview.jpg)
 
-## STEP 1 - TEST
+## CONTINUOUS INTEGRATION & DEPLOYMENT
+
+Refer to
+[ci-README.md](https://github.com/JeffDeCola/crypto-wallet-status/blob/master/ci-README.md)
+on how I automated this process.
+
+### STEP 1 - TEST
 
 The following steps are located in
 [unit-tests.sh](https://github.com/JeffDeCola/crypto-wallet-status/tree/master/code/test/unit-tests.sh).
@@ -107,7 +113,7 @@ To create `_test` files,
 gotests -w -all main.go
 ```
 
-## STEP 2 - BUILD (DOCKER IMAGE VIA DOCKERFILE)
+### STEP 2 - BUILD (DOCKER IMAGE VIA DOCKERFILE)
 
 The following steps are located in
 [build.sh](https://github.com/JeffDeCola/crypto-wallet-status/blob/master/code/build-push/build.sh).
@@ -130,7 +136,7 @@ docker exec -i -t crypto-wallet-status /bin/bash
 docker logs crypto-wallet-status
 ```
 
-### Stage 1
+#### Stage 1
 
 In stage 1, rather than copy a binary into a docker image (because
 that can cause issue), **the Dockerfile will build the binary in the
@@ -145,13 +151,13 @@ RUN go get -d -v
 RUN go build -o /go/bin/crypto-wallet-status main.go
 ```
 
-### Stage 2
+#### Stage 2
 
 In stage 2, the Dockerfile will copy the binary created in
 stage 1 and place into a smaller docker base image based
 on `alpine`, which is around 13MB.
 
-## STEP 3 - PUSH (TO DOCKERHUB)
+### STEP 3 - PUSH (TO DOCKERHUB)
 
 The following steps are located in
 [push.sh](https://github.com/JeffDeCola/crypto-wallet-status/blob/master/code/build-push/push.sh).
@@ -172,7 +178,7 @@ Check the
 [crypto-wallet-status](https://hub.docker.com/r/jeffdecola/crypto-wallet-status)
 docker image at DockerHub.
 
-## STEP 4 - DEPLOY (TO MARATHON)
+### STEP 4 - DEPLOY (TO MARATHON)
 
 The following steps are located in
 [deploy.sh](https://github.com/JeffDeCola/crypto-wallet-status/blob/master/code/deploy-marathon/deploy.sh).
@@ -190,9 +196,3 @@ curl -X PUT http://192.168.20.117:8080/v2/apps/crypto-wallet-long-running \
 -d @app.json \
 -H "Content-type: application/json"
 ```
-
-## CONTINUOUS INTEGRATION & DEPLOYMENT
-
-Refer to
-[ci-README.md](https://github.com/JeffDeCola/crypto-wallet-status/blob/master/ci-README.md)
-for how I automated the above process.
