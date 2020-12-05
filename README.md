@@ -27,9 +27,9 @@ Table of Contents,
 
 Documentation and references,
 
-* The `crypto-wallet-status`
-  [Docker Image](https://hub.docker.com/r/jeffdecola/crypto-wallet-status)
-  on DockerHub
+* The
+  [crypto-wallet-status](https://hub.docker.com/r/jeffdecola/crypto-wallet-status)
+  docker image on DockerHub
 
 [GitHub Webpage](https://jeffdecola.github.io/crypto-wallet-status/)
 _built with
