@@ -4,15 +4,16 @@
 *** THE REPO IS UNDER CONSTRUCTION - CHECK BACK SOON ***
 ```
 
+[![Go Reference](https://pkg.go.dev/badge/github.com/JeffDeCola/crypto-wallet-status.svg)](https://pkg.go.dev/github.com/JeffDeCola/crypto-wallet-status)
 [![Go Report Card](https://goreportcard.com/badge/github.com/JeffDeCola/crypto-wallet-status)](https://goreportcard.com/report/github.com/JeffDeCola/crypto-wallet-status)
-[![GoDoc](https://godoc.org/github.com/JeffDeCola/crypto-wallet-status?status.svg)](https://godoc.org/github.com/JeffDeCola/crypto-wallet-status)
-[![Maintainability](https://api.codeclimate.com/v1/badges/5ffc9029429ce278f688/maintainability)](https://codeclimate.com/github/JeffDeCola/crypto-wallet-status/maintainability)
-[![Issue Count](https://codeclimate.com/github/JeffDeCola/crypto-wallet-status/badges/issue_count.svg)](https://codeclimate.com/github/JeffDeCola/crypto-wallet-status/issues)
-[![License](http://img.shields.io/:license-mit-blue.svg)](http://jeffdecola.mit-license.org)
+[![codeclimate Maintainability](https://api.codeclimate.com/v1/badges/5ffc9029429ce278f688/maintainability)](https://codeclimate.com/github/JeffDeCola/crypto-wallet-status/maintainability)
+[![codeclimate Issue Count](https://codeclimate.com/github/JeffDeCola/crypto-wallet-status/badges/issue_count.svg)](https://codeclimate.com/github/JeffDeCola/crypto-wallet-status/issues)
+[![MIT License](http://img.shields.io/:license-mit-blue.svg)](http://jeffdecola.mit-license.org)
+[![jeffdecola.com](https://img.shields.io/badge/website-jeffdecola.com-blue)](https://jeffdecola.com)
 
 _Check all your public cryptocurrency wallets via a webpage (iPhone App coming soon)._
 
-Table of Contents,
+Table of Contents
 
 * [OVERVIEW](https://github.com/JeffDeCola/crypto-wallet-status#overview)
 * [PREREQUISITES](https://github.com/JeffDeCola/crypto-wallet-status#prerequisites)
@@ -25,15 +26,15 @@ Table of Contents,
 * [STEP 4 - DEPLOY (TO MARATHON)](https://github.com/JeffDeCola/crypto-wallet-status#step-4---deploy-to-marathon)
 * [CONTINUOUS INTEGRATION & DEPLOYMENT](https://github.com/JeffDeCola/crypto-wallet-status#continuous-integration--deployment)
 
-Documentation and references,
+Documentation and Reference
 
 * The
   [crypto-wallet-status](https://hub.docker.com/r/jeffdecola/crypto-wallet-status)
   docker image on DockerHub
-
-[GitHub Webpage](https://jeffdecola.github.io/crypto-wallet-status/)
-_built with
-[concourse ci](https://github.com/JeffDeCola/crypto-wallet-status/blob/master/ci-README.md)_
+* This repos
+  [github webpage](https://jeffdecola.github.io/crypto-wallet-status/)
+  _built with
+  [concourse](https://github.com/JeffDeCola/crypto-wallet-status/blob/master/ci-README.md)_
 
 ## OVERVIEW
 

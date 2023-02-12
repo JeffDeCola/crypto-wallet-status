@@ -56,8 +56,8 @@ echo "cp -R ./crypto-wallet-status src/github.com/JeffDeCola/."
 cp -R ./crypto-wallet-status src/github.com/JeffDeCola/.
 echo " "
 
-echo "cd src/github.com/JeffDeCola/crypto-wallet-status/code"
-cd src/github.com/JeffDeCola/crypto-wallet-status/code
+echo "cd src/github.com/JeffDeCola/crypto-wallet-status/wallet-status-code"
+cd src/github.com/JeffDeCola/crypto-wallet-status/wallet-status-code
 echo " "
 
 echo "Check that you are set and everything is in the right place for go:"
