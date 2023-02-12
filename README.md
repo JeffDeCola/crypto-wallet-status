@@ -4,6 +4,7 @@
 *** THE REPO IS UNDER CONSTRUCTION - CHECK BACK SOON ***
 ```
 
+[![Tag Latest](https://badgen.net/github/tag/JeffDeCola/crypto-wallet-status)](https://github.com/JeffDeCola/crypto-wallet-status/tags)
 [![Go Reference](https://pkg.go.dev/badge/github.com/JeffDeCola/crypto-wallet-status.svg)](https://pkg.go.dev/github.com/JeffDeCola/crypto-wallet-status)
 [![Go Report Card](https://goreportcard.com/badge/github.com/JeffDeCola/crypto-wallet-status)](https://goreportcard.com/report/github.com/JeffDeCola/crypto-wallet-status)
 [![codeclimate Maintainability](https://api.codeclimate.com/v1/badges/5ffc9029429ce278f688/maintainability)](https://codeclimate.com/github/JeffDeCola/crypto-wallet-status/maintainability)
