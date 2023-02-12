@@ -1,5 +1,5 @@
-_built with
-[concourse ci](https://github.com/JeffDeCola/crypto-wallet-status/blob/master/ci-README.md)_
+  _built with
+  [concourse](https://github.com/JeffDeCola/crypto-wallet-status/blob/master/ci-README.md)_
 
 # OVERVIEW
 
