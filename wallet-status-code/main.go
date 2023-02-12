@@ -10,7 +10,7 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
-// Addthis Adds two ints together
+// addThis Adds two ints together
 func addThis(a int, b int) (temp int) {
 	temp = a + b
 	return
