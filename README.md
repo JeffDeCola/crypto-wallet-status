@@ -1,8 +1,4 @@
-# crypto-wallet-status
-
-```text
-*** THE REPO IS UNDER CONSTRUCTION - CHECK BACK SOON ***
-```
+# CRYPTO WALLET STATUS
 
 [![Tag Latest](https://badgen.net/github/tag/JeffDeCola/crypto-wallet-status)](https://github.com/JeffDeCola/crypto-wallet-status/tags)
 [![Go Reference](https://pkg.go.dev/badge/github.com/JeffDeCola/crypto-wallet-status.svg)](https://pkg.go.dev/github.com/JeffDeCola/crypto-wallet-status)
@@ -12,6 +8,10 @@
 [![Docker Pulls](https://badgen.net/docker/pulls/jeffdecola/crypto-wallet-status?icon=docker&label=pulls)](https://hub.docker.com/r/jeffdecola/crypto-wallet-status/)
 [![MIT License](http://img.shields.io/:license-mit-blue.svg)](http://jeffdecola.mit-license.org)
 [![jeffdecola.com](https://img.shields.io/badge/website-jeffdecola.com-blue)](https://jeffdecola.com)
+
+```text
+*** THE REPO IS UNDER CONSTRUCTION - CHECK BACK SOON ***
+```
 
 _Check all your public cryptocurrency wallets via a webpage (iPhone App coming soon)._
 
