@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # crypto-wallet-status destroy-pipeline.sh
 
 echo " "

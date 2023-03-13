@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # crypto-wallet-status set-pipeline.sh
 
 echo " "

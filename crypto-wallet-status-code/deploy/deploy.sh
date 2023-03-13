@@ -1,29 +1,29 @@
-#!/bin/sh -e
-# hello-go-deploy-marathon example-01 run.sh
+#!/bin/sh
+# crypto-wallet-status deploy.sh
 
 echo " "
 
 if [ "$1" = "-debug" ]
 then
     echo "************************************************************************"
-    echo "* run.sh -debug (START) ************************************************"
+    echo "* deploy.sh -debug (START) *********************************************"
     echo "************************************************************************"
-    # set -x enables a mode of the shell where all executed commands are printed to the terminal.
+    # set -x enables a mode of the shell where all executed commands
+    # are printed to the terminal.
     set -x
     echo " "
 else
     echo "************************************************************************"
-    echo "* run.sh (START) *******************************************************"
+    echo "* deploy.sh (START) ****************************************************"
     echo "************************************************************************"
     echo " "
 fi
 
-echo "go run main.go"
-echo " "
-go run main.go
+echo "Deploy to Docker"
+# DO SOMETHING HERE
 echo " "
 
 echo "************************************************************************"
-echo "* run.sh (END) **************************************************"
+echo "* deploy.sh (END) ******************************************************"
 echo "************************************************************************"
 echo " "
