@@ -1,4 +1,4 @@
-# crypto-wallet-status code Dockerfile used to build docker image
+# crypto-wallet-status Dockerfile used to build docker image
 
 # Multi-stage build to create a small docker image
 

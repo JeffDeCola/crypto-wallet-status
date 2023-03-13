@@ -1,5 +1,5 @@
 #!/bin/sh -e
-# crypto-wallet-status code build.sh
+# crypto-wallet-status build.sh
 
 echo " "
 
@@ -8,7 +8,8 @@ then
     echo "************************************************************************"
     echo "* build.sh -debug (START) **********************************************"
     echo "************************************************************************"
-    # set -x enables a mode of the shell where all executed commands are printed to the terminal.
+    # set -x enables a mode of the shell where all executed commands
+    # are printed to the terminal.
     set -x
     echo " "
 else

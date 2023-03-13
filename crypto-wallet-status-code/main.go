@@ -1,4 +1,4 @@
-// hello-go-deploy-marathon code main.go
+// hello-go-deploy-marathon main.go
 
 package main
 
