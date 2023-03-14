@@ -22,11 +22,12 @@ fi
 echo "cd to where go code is"
 echo "cd .."
 cd ..
+echo " "
 
 echo "Build your docker image using Dockerfile"
 echo "NOTE: The binary is built using this step"
-echo "docker build -f build-push/Dockerfile -t jeffdecola/crypto-wallet-status ."
-docker build -f build-push/Dockerfile -t jeffdecola/crypto-wallet-status .
+echo "docker build -f build/Dockerfile -t jeffdecola/crypto-wallet-status ."
+docker build -f build/Dockerfile -t jeffdecola/crypto-wallet-status .
 echo " "
 
 echo "Check Docker Image size"
