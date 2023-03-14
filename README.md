@@ -148,6 +148,7 @@ docker images jeffdecola/crypto-wallet-status:latest
 docker run --name crypto-wallet-status -dit jeffdecola/crypto-wallet-status
 docker exec -i -t crypto-wallet-status /bin/bash
 docker logs crypto-wallet-status
+docker rm -f crypto-wallet-status
 ```
 
 In **stage 1**, rather than copy a binary into a docker image (because
@@ -193,6 +194,7 @@ cd crypto-wallet-status-code
 docker run --name crypto-wallet-status -dit jeffdecola/crypto-wallet-status
 docker exec -i -t crypto-wallet-status /bin/bash
 docker logs crypto-wallet-status
+docker rm -f crypto-wallet-status
 ```
 
 ## CONTINUOUS INTEGRATION & DEPLOYMENT
