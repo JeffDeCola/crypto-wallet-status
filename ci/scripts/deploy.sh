@@ -20,16 +20,8 @@ fi
 echo "GOAL ----------------------------------------------------------------------------------"
 echo " "
 
-echo "The goal is to send the app.json file to marathon"
-echo "This is done in the marathon resource"
-echo " "
-
-echo "CHECK THINGS --------------------------------------------------------------------------"
-echo " "
-
-echo "List whats in the app.json file"
-echo "cat crypto-wallet-status/crypto-wallet-status-code/deploy/app.json"
-cat crypto-wallet-status/crypto-wallet-status-code/deploy/app.json
+echo "The goal is to deploy docker image to docker"
+echo "This is done in the ????? resource"
 echo " "
 
 echo "DEPLOY DONE IN PIPELINE ---------------------------------------------------------------"

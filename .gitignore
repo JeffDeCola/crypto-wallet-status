@@ -11,10 +11,10 @@ coverage.out
 *.jpg:Zone.Identifier
 
 # Ignore binaries
-**/bin/crypto-wallet
+**/bin/crypto-wallet-status
 
 # Ignore test coverage
 **/test/test_coverage.txt
 
 # Ignore binary used for docker build
-**/build-push/crypto-wallet
+**/build-push/crypto-wallet-status

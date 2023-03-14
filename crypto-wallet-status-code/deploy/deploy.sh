@@ -20,7 +20,7 @@ else
 fi
 
 echo "Deploy to Docker"
-# DO SOMETHING HERE
+docker run --name crypto-wallet-status -dit jeffdecola/crypto-wallet-status
 echo " "
 
 echo "************************************************************************"
