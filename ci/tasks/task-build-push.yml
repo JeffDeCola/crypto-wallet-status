@@ -10,10 +10,10 @@ image_resource:
     tag: 1.20.1
 
 inputs:
-- name: crypto-wallet-status
+  - name: crypto-wallet-status
 
 outputs:
-- name: dist
+  - name: dist
 
 run:
   path: ./crypto-wallet-status/ci/scripts/build-push.sh

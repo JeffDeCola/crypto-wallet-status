@@ -22,7 +22,7 @@ fi
 echo "cd to where go code is"
 echo "cd .."
 cd ..
-echo " "
+echo " " 
 
 echo "Build your docker image using Dockerfile"
 echo "NOTE: The binary is built using this step"

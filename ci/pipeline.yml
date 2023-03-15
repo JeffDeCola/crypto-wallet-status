@@ -7,201 +7,250 @@ jobs:
 - name: job-readme-github-pages
 #**********************************************
   plan:
-  - get: crypto-wallet-status
-    trigger: true
-  - put: resource-slack-alert
-    params:
-      channel: '#jeff-builds'
-      text: "From crypto-wallet-status: STARTED job-readme-github-pages in concourse ci."
-  - put: resource-repo-status
-    params: { state: "pending", description: "STARTED job-readme-github-pages in concourse ci.", commit: "crypto-wallet-status" }
-  - task: task-readme-github-pages
-    # try this
-    file: crypto-wallet-status/ci/tasks/task-readme-github-pages.yml
-    on_success:
-      do:
-      - put: crypto-wallet-status
-        params:
-          repository: crypto-wallet-status-updated  
-      - put: resource-slack-alert
-        params:
-          channel: '#jeff-builds'
-          text: "From crypto-wallet-status: PASSED job-readme-github-pages in concourse ci."
-      - put: resource-repo-status
-        params: { state: "success", description: "PASSED job-readme-github-pages in concourse ci", commit: "crypto-wallet-status" }
-    on_failure:
-      do:
-      - put: resource-slack-alert
-        params:
-          channel: '#jeff-builds'
-          text: "From crypto-wallet-status: FAILED job-readme-github-pages in concourse ci."
-      - put: resource-repo-status
-        params: { state: "failure", description: "FAILED job-readme-github-pages in concourse ci", commit: "crypto-wallet-status" }
+
+    # GET REPO FROM GITHUB
+    - get: crypto-wallet-status
+      trigger: true
+    # SEND SLACK ALERT  
+    - put: resource-slack-alert
+      params:
+        channel: '#jeff-builds'
+        text: "From crypto-wallet-status: STARTED job-readme-github-pages in concourse ci."
+    # SEND GITHUB STATUS
+    - put: resource-repo-status
+      params: { state: "pending", description: "STARTED job-readme-github-pages in concourse ci.", commit: "crypto-wallet-status" }    
+    
+    # RUN TASK IN REPO USING ALPINE DOCKER IMAGE
+    - task: task-readme-github-pages
+      file: crypto-wallet-status/ci/tasks/task-readme-github-pages.yml
+      
+      # TASK SUCCESS
+      on_success:
+        do:
+          # PUSH NEW REPO TO GITHUB
+          - put: crypto-wallet-status
+            params:
+              repository: crypto-wallet-status-updated  
+          # SEND SLACK ALERT  
+          - put: resource-slack-alert
+            params:
+              channel: '#jeff-builds'
+              text: "From crypto-wallet-status: PASSED job-readme-github-pages in concourse ci."
+          # SEND GITHUB STATUS
+          - put: resource-repo-status
+            params: { state: "success", description: "PASSED job-readme-github-pages in concourse ci", commit: "crypto-wallet-status" }
+      
+      # TASK FAILURE   
+      on_failure:
+        do:
+          # SEND SLACK ALERT  
+          - put: resource-slack-alert
+            params:
+              channel: '#jeff-builds'
+              text: "From crypto-wallet-status: FAILED job-readme-github-pages in concourse ci."
+          # SEND GITHUB STATUS
+          - put: resource-repo-status
+            params: { state: "failure", description: "FAILED job-readme-github-pages in concourse ci", commit: "crypto-wallet-status" }
 
 #**********************************************
 - name: job-unit-tests
 #**********************************************
   plan:
-  - get: crypto-wallet-status
-    trigger: true
-    passed: [job-readme-github-pages]
-  - put: resource-slack-alert
-    params:
-      channel: '#jeff-builds'
-      text: "From crypto-wallet-status: STARTED job-unit-tests in concourse ci."
-  - put: resource-repo-status
-    params: { state: "pending", description: "STARTED job-unit-tests in concourse ci.", commit: "crypto-wallet-status" }
-  - task: task-unit-tests
-    file: crypto-wallet-status/ci/tasks/task-unit-tests.yml
-    on_success:
-      do:
-      - put: crypto-wallet-status
-        params:
-          repository: crypto-wallet-status  
-      - put: resource-slack-alert
-        params:
-          channel: '#jeff-builds'
-          text_file: coverage-results/test_coverage.txt
-          text: |
-            From crypto-wallet-status: PASSED job-unit-tests in concourse ci. 
-            $TEXT_FILE_CONTENT
-      - put: resource-repo-status
-        params: { state: "success", description: "PASSED job-unit-tests in concourse ci", commit: "crypto-wallet-status" }
-    on_failure:
-      do:
-      - put: resource-slack-alert
-        params:
-          channel: '#jeff-builds'
-          text: "From crypto-wallet-status: FAILED job-unit-tests in concourse ci."
-      - put: resource-repo-status
-        params: { state: "failure", description: "FAILED job-unit-tests in concourse ci.", commit: "crypto-wallet-status" }
+
+    # GET REPO FROM GITHUB
+    - get: crypto-wallet-status
+      trigger: true
+      passed: [job-readme-github-pages]
+    # SEND SLACK ALERT  
+    - put: resource-slack-alert
+      params:
+        channel: '#jeff-builds'
+        text: "From crypto-wallet-status: STARTED job-unit-tests in concourse ci."
+    # SEND GITHUB STATUS
+    - put: resource-repo-status
+      params: { state: "pending", description: "STARTED job-unit-tests in concourse ci.", commit: "crypto-wallet-status" }
+
+    # RUN TASK IN REPO USING ALPINE DOCKER IMAGE 
+    - task: task-unit-tests
+      file: crypto-wallet-status/ci/tasks/task-unit-tests.yml
+
+      # TASK SUCCESS
+      on_success:
+        do:
+          # PUSH NEW REPO TO GITHUB
+          - put: crypto-wallet-status
+            params:
+              repository: crypto-wallet-status  
+          # SEND SLACK ALERT  
+          - put: resource-slack-alert
+            params:
+              channel: '#jeff-builds'
+              text_file: coverage-results/test_coverage.txt
+              text: |
+                From crypto-wallet-status: PASSED job-unit-tests in concourse ci. 
+                $TEXT_FILE_CONTENT
+          # SEND GITHUB STATUS
+          - put: resource-repo-status
+            params: { state: "success", description: "PASSED job-unit-tests in concourse ci", commit: "crypto-wallet-status" }
+      
+      # TASK FAILURE
+      on_failure:
+        do:
+          # SEND SLACK ALERT  
+          - put: resource-slack-alert
+            params:
+              channel: '#jeff-builds'
+              text: "From crypto-wallet-status: FAILED job-unit-tests in concourse ci."
+          # SEND GITHUB STATUS
+          - put: resource-repo-status
+            params: { state: "failure", description: "FAILED job-unit-tests in concourse ci.", commit: "crypto-wallet-status" }
 
 #**********************************************
 - name: job-build-push
 #**********************************************
   plan:
+
+    # GET REPO FROM GITHUB
     - get: crypto-wallet-status
       trigger: true
       passed: [job-unit-tests]
+    # SEND SLACK ALERT  
     - put: resource-slack-alert
       params:
         channel: '#jeff-builds'
         text: "From crypto-wallet-status: STARTED job-build-push in concourse ci."
+    # SEND GITHUB STATUS
     - put: resource-repo-status
       params: { state: "pending", description: "STARTED job-build-push in concourse ci.", commit: "crypto-wallet-status" }
+
+    # RUN TASK IN REPO USING ALPINE DOCKER IMAGE 
     - task: task-build-push
       file: crypto-wallet-status/ci/tasks/task-build-push.yml
+
+    # PUSH DOCKER IMAGE TO DOCKERHUB  
     - put: resource-dump-to-dockerhub
       params: { build: "dist"}
+      
+      # TASK SUCCESS
       on_success:
         do:
-        - put: resource-slack-alert
-          params:
-            channel: '#jeff-builds'
-            text: "From crypto-wallet-status: PASSED job-build-push in concourse ci."
-        - put: resource-repo-status
-          params: { state: "pending", description: "PASSED job-build-push in concourse ci.", commit: "crypto-wallet-status" }
+          # SEND SLACK ALERT  
+          - put: resource-slack-alert
+            params:
+              channel: '#jeff-builds'
+              text: "From crypto-wallet-status: PASSED job-build-push in concourse ci."
+          # SEND GITHUB STATUS
+          - put: resource-repo-status
+            params: { state: "pending", description: "PASSED job-build-push in concourse ci.", commit: "crypto-wallet-status" }
+      
+      # TASK FAILURE    
       on_failure:
         do:
-        - put: resource-slack-alert
-          params:
-            channel: '#jeff-builds'
-            text: "From crypto-wallet-status: FAILED job-build-push in concourse ci."
-        - put: resource-repo-status
-          params: { state: "failure", description: "FAILED job-build-push in concourse ci.", commit: "crypto-wallet-status" }
+          # SEND SLACK ALERT  
+          - put: resource-slack-alert
+            params:
+              channel: '#jeff-builds'
+              text: "From crypto-wallet-status: FAILED job-build-push in concourse ci."
+          # SEND GITHUB STATUS
+          - put: resource-repo-status
+            params: { state: "failure", description: "FAILED job-build-push in concourse ci.", commit: "crypto-wallet-status" }
 
 #**********************************************
 - name: job-deploy
 #**********************************************
   plan:
+
+    # GET REPO FROM GITHUB
     - get: crypto-wallet-status
       trigger: true
       passed: [job-build-push]
+    # SEND SLACK ALERT
     - put: resource-slack-alert
       params:
         channel: '#jeff-builds'
         text: "From crypto-wallet-status: STARTED job-deploy in concourse ci."
+    # SEND GITHUB STATUS
     - put: resource-repo-status
       params: { state: "pending", description: "STARTED job-deploy in concourse ci.", commit: "crypto-wallet-status" }
+    
+    # RUN TASK IN REPO USING ALPINE DOCKER IMAGE 
     - task: task-deploy
       file: crypto-wallet-status/ci/tasks/task-deploy.yml
-    - put: resource-deploy-marathon
-      params: {app_json: "crypto-wallet-status/crypto-wallet-status-code/deploy/app.json", time_out: 10}
+      params:
+        DOCKER_HOST_SSH_PRIVATE_KEY_FILE: {{docker_host_ssh_private_key_file}}
+        DOCKER_HOST_PORT: '22'
+        DOCKER_HOST_USER: 'jeffry'
+        DOCKER_HOST_IP: '192.168.20.122'
+
+      # TASK SUCCESS
       on_success:
         do:
-        - put: resource-slack-alert
-          params:
-            channel: '#jeff-builds'
-            text: "From crypto-wallet-status: PASSED job-deploy in concourse ci."
-        - put: resource-repo-status
-          params: { state: "success", description: "PASSED job-deploy in concourse ci.", commit: "crypto-wallet-status" }
+          # SEND SLACK ALERT  
+          - put: resource-slack-alert
+            params:
+              channel: '#jeff-builds'
+              text: "From crypto-wallet-status: PASSED job-deploy in concourse ci."
+          # SEND GITHUB STATUS
+          - put: resource-repo-status
+            params: { state: "success", description: "PASSED job-deploy in concourse ci.", commit: "crypto-wallet-status" }
+
+      # TASK FAILURE    
       on_failure:
         do:
-        - put: resource-slack-alert
-          params:
-            channel: '#jeff-builds'
-            text: "From crypto-wallet-status: FAILED job-deploy in concourse ci."
-        - put: resource-repo-status
-          params: { state: "failure", description: "FAILED job-deploy in concourse ci.", commit: "crypto-wallet-status" }
+          # SEND SLACK ALERT  
+          - put: resource-slack-alert
+            params:
+              channel: '#jeff-builds'
+              text: "From crypto-wallet-status: FAILED job-deploy in concourse ci."
+          # SEND GITHUB STATUS
+          - put: resource-repo-status
+            params: { state: "failure", description: "FAILED job-deploy in concourse ci.", commit: "crypto-wallet-status" }
 
 #------------------------------------------------------------------------------------------
 resource_types:
 
-- name: slack-notification
-  type: docker-image
-  source:
-    repository: cfcommunity/slack-notification-resource
-    tag: latest
+  - name: slack-notification
+    type: docker-image
+    source:
+      repository: cfcommunity/slack-notification-resource
+      tag: latest
 
-- name: github-status
-  type: docker-image
-  source:
-    repository: dpb587/github-status-resource
-    tag: master
-
-- name: marathon-deploy
-  type: docker-image
-  source:
-   repository: ckaznocha/marathon-resource
-   tag: latest
+  - name: github-status
+    type: docker-image
+    source:
+      repository: dpb587/github-status-resource
+      tag: master
 
 #------------------------------------------------------------------------------------------
 resources:
 
-- name: crypto-wallet-status
-  type: git
-  icon: github
-  source:
-    #uri: https://github.com/jeffdecola/crypto-wallet-status
-    uri: git@github.com:jeffdecola/crypto-wallet-status.git
-    branch: master
-    private_key: ((git_private_key))
+  - name: crypto-wallet-status
+    type: git
+    icon: github
+    source:
+      #uri: https://github.com/jeffdecola/crypto-wallet-status
+      uri: git@github.com:jeffdecola/crypto-wallet-status.git
+      branch: master
+      private_key: ((git_private_key))
 
-- name: resource-dump-to-dockerhub
-  type: docker-image
-  icon: docker
-  source:
-    repository: jeffdecola/crypto-wallet-status
-    tag: latest
-    username: jeffdecola
-    password: ((dockerhub_password))
+  - name: resource-dump-to-dockerhub
+    type: docker-image
+    icon: docker
+    source:
+      repository: jeffdecola/crypto-wallet-status
+      tag: latest
+      username: jeffdecola
+      password: ((dockerhub_password))
 
-- name: resource-slack-alert
-  type: slack-notification
-  icon: slack
-  source:
-    url: ((slack_url)) 
+  - name: resource-slack-alert
+    type: slack-notification
+    icon: slack
+    source:
+      url: ((slack_url)) 
 
-- name: resource-repo-status 
-  type: github-status
-  icon: github
-  source:
-    repository: jeffdecola/crypto-wallet-status 
-    access_token: ((repo_github_token))
-
-- name: resource-deploy-marathon
-  type: marathon-deploy
-  icon: github
-  source:
-    app_id: crypto-wallet-status-long-run
-    uri: http://localhost:8080
+  - name: resource-repo-status 
+    type: github-status
+    icon: github
+    source:
+      repository: jeffdecola/crypto-wallet-status 
+      access_token: ((repo_github_token))

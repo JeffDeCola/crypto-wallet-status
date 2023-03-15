@@ -1,4 +1,4 @@
-// hello-go-deploy-marathon example-01 main_test.go
+// crypto-wallet-status main.go
 
 package main
 
