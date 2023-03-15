@@ -67,7 +67,7 @@ To
 
 ```bash
 cd crypto-wallet-status-code/bin
-go build -o crypto-wallet-status main.go
+go build -o crypto-wallet-status ../main.go
 ./crypto-wallet-status
 ```
 
@@ -99,8 +99,8 @@ with a
 [Dockerfile](https://github.com/JeffDeCola/crypto-wallet-status/blob/master/crypto-wallet-status-code/build/Dockerfile),
 
 ```bash
-cd crypto-wallet-status-code/build
-docker build -f Dockerfile -t jeffdecola/crypto-wallet-status .
+cd crypto-wallet-status-code
+docker build -f build/Dockerfile -t jeffdecola/crypto-wallet-status .
 ```
 
 You can check and test this docker image,
@@ -110,6 +110,7 @@ docker images jeffdecola/crypto-wallet-status:latest
 docker run --name crypto-wallet-status -dit jeffdecola/crypto-wallet-status
 docker exec -i -t crypto-wallet-status /bin/bash
 docker logs crypto-wallet-status
+docker rm -f crypto-wallet-status
 ```
 
 In **stage 1**, rather than copy a binary into a docker image (because
@@ -151,8 +152,11 @@ To
 [deploy.sh](https://github.com/JeffDeCola/crypto-wallet-status/blob/master/crypto-wallet-status-code/deploy/deploy.sh),
 
 ```bash
-cd crypto-wallet-status-code/deploy
-?????????????????????????
+cd crypto-wallet-status-code
+docker run --name crypto-wallet-status -dit jeffdecola/crypto-wallet-status
+docker exec -i -t crypto-wallet-status /bin/bash
+docker logs crypto-wallet-status
+docker rm -f crypto-wallet-status
 ```
 
 ## CONTINUOUS INTEGRATION & DEPLOYMENT
