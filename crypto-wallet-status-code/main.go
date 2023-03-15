@@ -1,4 +1,4 @@
-// hello-go-deploy-marathon main.go
+// crypto-wallet-status main.go
 
 package main
 
@@ -10,7 +10,7 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
-// addThis Adds two ints together
+// Addthis Adds two ints together
 func addThis(a int, b int) (temp int) {
 	temp = a + b
 	return

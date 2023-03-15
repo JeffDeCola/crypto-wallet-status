@@ -9,8 +9,14 @@ image_resource:
     repository: golang
     tag: 1.20.1
 
+params:
+  DOCKER_HOST_SSH_PRIVATE_KEY_FILE: "will be replaced"
+  DOCKER_HOST_PORT: "will be replaced"
+  DOCKER_HOST_USER: "will be replaced"
+  DOCKER_HOST_IP: "will be replaced"
+
 inputs:
-- name: crypto-wallet-status
+  - name: crypto-wallet-status
 
 run:
   path: ./crypto-wallet-status/ci/scripts/deploy.sh

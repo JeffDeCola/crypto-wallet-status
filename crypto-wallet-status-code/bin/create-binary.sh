@@ -1,5 +1,5 @@
 #!/bin/sh -e
-# crypto-wallet-status create-binary.sh
+# crypto-miner-manger create-binary.sh
 
 echo " "
 
@@ -19,7 +19,7 @@ else
     echo " "
 fi
 
-echo "Create a binary crypto-wallet in /bin"
+echo "Create a binary crypto-miner in /bin"
 echo "    Kick off executable with ./crypto-wallet-status"
 go build -o crypto-wallet-status ../main.go
 echo " "
