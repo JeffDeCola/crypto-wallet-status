@@ -33,7 +33,7 @@ Documentation and Reference
 * The
   [crypto-wallet-status](https://hub.docker.com/r/jeffdecola/crypto-wallet-status)
   docker image on DockerHub
-* [crypto-wallet-status](https://github.com/JeffDeCola/crypto-wallet-status)
+* [crypto-miner-manager](https://github.com/JeffDeCola/crypto-miner-manager)
 * This repos
   [github webpage](https://jeffdecola.github.io/crypto-wallet-status/)
   _built with
