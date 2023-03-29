@@ -14,7 +14,7 @@ I use concourse to automate,
 
 The concourse
 [pipeline.yml](https://github.com/JeffDeCola/crypto-wallet-status/blob/master/ci/pipeline.yml)
-shows the entire ci flow. Visually, it looks like,
+shows the entire ci flow,
 
 ![IMAGE - crypto-wallet-status concourse ci pipeline - IMAGE](docs/pics/crypto-wallet-status-pipeline.jpg)
 
